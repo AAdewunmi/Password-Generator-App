@@ -18,3 +18,7 @@ body {
   padding: 10px;
   min-height: 100vh;
 }
+
+input[type="checkbox"] {
+    margin-right: 0;
+}
