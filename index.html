@@ -2,10 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Responsive meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Compatibility meta tag -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random Password Generator</title>
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for clipboard icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--
+        index.html
+        -----------
+        This is the main HTML file for the Password Generator App.
+        It provides a user interface to generate random passwords based on user-selected criteria.
+        Users can specify password length and character types (uppercase, lowercase, numbers, symbols).
+        The generated password can be copied to the clipboard.
+    -->
 </head>
 <body>
-    
+    <div class="container">
+        <h2>Password Generator</h2>
+        <!-- Display area for the generated password and clipboard button -->
+        <div class="sub-container">
+            <span class="result"></span>
+            <button class="btn" id="clipboard" title="Copy to clipboard">
+                <i class="fas fa-clipboard"></i>
+            </button>
+        </div>
+        <!-- Settings for password generation -->
+        <div class="set-container">
+            <!-- Password length input -->
+            <div class="setup">
+                <label for="length-input">Password length</label>
+                <input type="number" id="length-input" class="length" min="2" max="15" value="15" />
+            </div>
+            <!-- Uppercase letters option -->
+            <div class="setup">
+                <label for="uppercase-input">Include uppercase letters</label>
+                <input type="checkbox" id="uppercase-input" class="uppercase" checked />
+            </div>
+            <!-- Lowercase letters option -->
+            <div class="setup">
+                <label for="lowercase-input">Include lowercase letters</label>
+                <input type="checkbox" id="lowercase-input" class="lowercase" checked />
+            </div>
+            <!-- Numbers option -->
+            <div class="setup">
+                <label for="numbers-input">Include numbers</label>
+                <input type="checkbox" id="numbers-input" class="numbers" checked />
+            </div>
+            <!-- Symbols option -->
+            <div class="setup">
+                <label for="symbols-input">Include symbols</label>
+                <input type="checkbox" id="symbols-input" class="symbols" checked />
+            </div>
+        </div>
+        <!-- Button to generate a new password -->
+        <button class="btn" id="generate">
+            Generate Password
+        </button>
+    </div>
+    <!-- Main JavaScript file for password generation logic -->
+    <script src="script.js"></script>
 </body>
 </html>
