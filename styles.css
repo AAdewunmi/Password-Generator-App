@@ -22,3 +22,55 @@ body {
 input[type="checkbox"] {
     margin-right: 0;
 }
+
+.container {
+    background: #3b3b98;
+    padding: 20px;
+    width: 350px;
+    max-width: 100%;
+    box-shadow: 2px 4px 20px 6px rgb(0 0 0 /40%);
+  }
+  
+  .container h2 {
+    margin: 10px 0 20px;
+    text-align: center;
+  }
+  
+  .sub-container {
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding: 12px 10px;
+    height: 50px;
+    width: 100%;
+  }
+  
+  .sub-container .result {
+    word-wrap: break-word;
+    max-width: calc(100% - 40px);
+  }
+  
+  .container .sub-container .btn {
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 40px;
+    width: 40px;
+  }
+  
+  .container .btn {
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px 12px;
+    background: #111;
+    display: block;
+    width: 100%;
+    outline: none;
+  }
