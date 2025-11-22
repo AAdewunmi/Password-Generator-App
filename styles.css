@@ -74,3 +74,20 @@ input[type="checkbox"] {
     width: 100%;
     outline: none;
   }
+
+  .setup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+  }
+  
+  .setup input#length {
+    outline: none;
+  }
+  
+  @media (max-width: 400px) {
+    .sub-container {
+      font-size: 14px;
+    }
+  }
