@@ -8,6 +8,19 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Screen reader-only text helper */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Full-page layout and background styling */
 body {
   background-color: #3b3b98;
@@ -81,15 +94,26 @@ input[type="checkbox"] {
     outline: none;
   }
 
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
   .setup {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 15px 0;
   }
+
+  .set-container p {
+    margin: 0 0 10px;
+    font-size: 14px;
+  }
   
   /* Numeric input tuning */
-  .setup input#length {
+  .setup input#length-input {
     outline: none;
   }
   

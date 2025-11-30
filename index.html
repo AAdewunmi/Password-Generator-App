@@ -23,48 +23,53 @@
     -->
 </head>
 <body>
-    <div class="container">
-        <h2>Password Generator</h2>
+    <main class="container" aria-label="Password generator">
+        <h2 id="generator-title">Password Generator</h2>
+        <p aria-describedby="generator-title">Choose your options and generate a password you can copy with one click.</p>
         <!-- Display area for the generated password and clipboard button -->
         <div class="sub-container">
-            <span class="result"></span>
-            <button class="btn" id="clipboard" title="Copy to clipboard">
-                <i class="fas fa-clipboard"></i>
+            <span class="result" id="password-result" role="status" aria-live="polite" aria-atomic="true"></span>
+            <button class="btn" id="clipboard" type="button" aria-label="Copy password to clipboard" title="Copy to clipboard">
+                <i class="fas fa-clipboard" aria-hidden="true"></i>
             </button>
         </div>
         <!-- Settings for password generation -->
-        <div class="set-container">
-            <!-- Password length input -->
-            <div class="setup">
-                <label for="length-input">Password length</label>
-                <input type="number" id="length-input" class="length" min="2" max="15" value="15" />
-            </div>
-            <!-- Uppercase letters option -->
-            <div class="setup">
-                <label for="uppercase-input">Include uppercase letters</label>
-                <input type="checkbox" id="uppercase-input" class="uppercase" checked />
-            </div>
-            <!-- Lowercase letters option -->
-            <div class="setup">
-                <label for="lowercase-input">Include lowercase letters</label>
-                <input type="checkbox" id="lowercase-input" class="lowercase" checked />
-            </div>
-            <!-- Numbers option -->
-            <div class="setup">
-                <label for="numbers-input">Include numbers</label>
-                <input type="checkbox" id="numbers-input" class="numbers" checked />
-            </div>
-            <!-- Symbols option -->
-            <div class="setup">
-                <label for="symbols-input">Include symbols</label>
-                <input type="checkbox" id="symbols-input" class="symbols" checked />
-            </div>
-        </div>
+        <form class="set-container" aria-labelledby="generator-title">
+            <fieldset>
+                <legend class="sr-only">Password options</legend>
+                <!-- Password length input -->
+                <div class="setup">
+                    <label for="length-input">Password length</label>
+                    <input type="number" id="length-input" class="length" min="2" max="15" value="15" inputmode="numeric" aria-describedby="length-help" />
+                </div>
+                <p id="length-help">Use 2–15 characters for a quick test password.</p>
+                <!-- Uppercase letters option -->
+                <div class="setup">
+                    <label for="uppercase-input">Include uppercase letters</label>
+                    <input type="checkbox" id="uppercase-input" class="uppercase" checked />
+                </div>
+                <!-- Lowercase letters option -->
+                <div class="setup">
+                    <label for="lowercase-input">Include lowercase letters</label>
+                    <input type="checkbox" id="lowercase-input" class="lowercase" checked />
+                </div>
+                <!-- Numbers option -->
+                <div class="setup">
+                    <label for="numbers-input">Include numbers</label>
+                    <input type="checkbox" id="numbers-input" class="numbers" checked />
+                </div>
+                <!-- Symbols option -->
+                <div class="setup">
+                    <label for="symbols-input">Include symbols</label>
+                    <input type="checkbox" id="symbols-input" class="symbols" checked />
+                </div>
+            </fieldset>
+        </form>
         <!-- Button to generate a new password -->
-        <button class="btn" id="generate">
+        <button class="btn" id="generate" type="button" aria-describedby="generator-title">
             Generate Password
         </button>
-    </div>
+    </main>
     <!-- Main JavaScript file for password generation logic -->
     <script src="script.js"></script>
 </body>
