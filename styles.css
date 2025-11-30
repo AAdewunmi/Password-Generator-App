@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400&family=Poppins:wght@100;200;300;400;500&display=swap");
 
+/* Basic reset and base font */
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +8,7 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Full-page layout and background styling */
 body {
   background-color: #3b3b98;
   color: #fff;
@@ -23,6 +25,7 @@ input[type="checkbox"] {
     margin-right: 0;
 }
 
+/* Main card container */
 .container {
     background: #3b3b98;
     padding: 20px;
@@ -31,11 +34,13 @@ input[type="checkbox"] {
     box-shadow: 2px 4px 20px 6px rgb(0 0 0 /40%);
   }
   
+  /* Heading spacing */
   .container h2 {
     margin: 10px 0 20px;
     text-align: center;
   }
   
+  /* Password display row */
   .sub-container {
     background-color: rgba(0, 0, 0, 0.4);
     display: flex;
@@ -54,6 +59,7 @@ input[type="checkbox"] {
     max-width: calc(100% - 40px);
   }
   
+  /* Copy button inside password row */
   .container .sub-container .btn {
     font-size: 20px;
     position: absolute;
@@ -82,10 +88,12 @@ input[type="checkbox"] {
     margin: 15px 0;
   }
   
+  /* Numeric input tuning */
   .setup input#length {
     outline: none;
   }
   
+  /* Tweak readability on narrow screens */
   @media (max-width: 400px) {
     .sub-container {
       font-size: 14px;
