@@ -43,3 +43,19 @@ clipboard.onclick = async () => {
     alert("Press Ctrl+C/Cmd+C to copy the highlighted password.");
   }
 };
+
+generateEl.onclick = () => {
+  const length = +lengthEl.value;
+  const hasLower = lowercaseEl.checked;
+  const hasUpper = uppercaseEl.checked;
+  const hasNumber = numbersEl.checked;
+  const hasSymbol = symbolsEl.checked;
+
+  resultEl.innerHTML = generatePassword(
+    hasLower,
+    hasUpper,
+    hasNumber,
+    hasSymbol,
+    length
+  );
+};
