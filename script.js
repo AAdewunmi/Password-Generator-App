@@ -61,24 +61,23 @@ generateEl.onclick = () => {
 };
 
 function generatePassword(lower, upper, number, symbol, length) {
-  let generatedPassword = "";
-  const typesCount = lower + upper + number + symbol;
-  const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(
-    (item) => Object.values(item)[0]
-  );
+  const generators = [
+    lower && randomFunc.lower,
+    upper && randomFunc.upper,
+    number && randomFunc.number,
+    symbol && randomFunc.symbol,
+  ].filter(Boolean);
 
-  if (typesCount == 0) {
-    return alert("No Selected Value");
+  if (generators.length === 0) {
+    alert("No Selected Value");
+    return "";
   }
 
-  for (let i = 0; i < length; i += typesCount) {
-    typesArr.forEach((type) => {
-      const funcName = Object.keys(type)[0];
-      generatedPassword += randomFunc[funcName]();
-    });
+  const chars = [];
+  for (let i = 0; chars.length < length; i += 1) {
+    const generator = generators[i % generators.length];
+    chars.push(generator());
   }
 
-  const finalPassword = generatedPassword.slice(0, length);
-
-  return finalPassword;
+  return chars.join("");
 }
