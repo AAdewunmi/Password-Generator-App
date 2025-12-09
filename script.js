@@ -6,6 +6,7 @@ const numbersEl = document.querySelector(".numbers");
 const symbolsEl = document.querySelector(".symbols");
 const generateEl = document.querySelector("#generate");
 const clipboard = document.querySelector("#clipboard");
+const messageEl = document.querySelector(".message");
 
 const randomFunc = {
   lower: getRandomLower,
@@ -18,7 +19,8 @@ clipboard.onclick = async () => {
   const password = resultEl.innerText;
 
   if (!password) {
-    return alert("No result to copy!");
+    showMessage("Nothing to copy yet. Generate a password first.", "error");
+    return;
   }
 
   if (!navigator.clipboard || !window.isSecureContext) {
@@ -27,12 +29,13 @@ clipboard.onclick = async () => {
     const selection = window.getSelection();
     selection.removeAllRanges();
     selection.addRange(range);
-    return alert("Press Ctrl+C/Cmd+C to copy the highlighted password.");
+    showMessage("Press Ctrl+C/Cmd+C to copy the highlighted password.", "error");
+    return;
   }
 
   try {
     await navigator.clipboard.writeText(password);
-    alert("Password copied to clipboard!");
+    showMessage("Password copied to clipboard!", "success");
   } catch (error) {
     console.error("Clipboard copy failed:", error);
     const range = document.createRange();
@@ -40,24 +43,41 @@ clipboard.onclick = async () => {
     const selection = window.getSelection();
     selection.removeAllRanges();
     selection.addRange(range);
-    alert("Press Ctrl+C/Cmd+C to copy the highlighted password.");
+    showMessage("Press Ctrl+C/Cmd+C to copy the highlighted password.", "error");
   }
 };
 
 generateEl.onclick = () => {
-  const length = +lengthEl.value;
+  const length = Number(lengthEl.value);
   const hasLower = lowercaseEl.checked;
   const hasUpper = uppercaseEl.checked;
   const hasNumber = numbersEl.checked;
   const hasSymbol = symbolsEl.checked;
 
-  resultEl.innerHTML = generatePassword(
+  if (!Number.isInteger(length)) {
+    showMessage("Password length must be a whole number.", "error");
+    return;
+  }
+
+  if (length < 2 || length > 15) {
+    showMessage("Choose a length between 2 and 15 characters.", "error");
+    return;
+  }
+
+  const finalPassword = generatePassword(
     hasLower,
     hasUpper,
     hasNumber,
     hasSymbol,
     length
   );
+
+  if (!finalPassword) {
+    return;
+  }
+
+  resultEl.innerHTML = finalPassword;
+  showMessage("Password generated.", "success");
 };
 
 function generatePassword(lower, upper, number, symbol, length) {
@@ -69,7 +89,7 @@ function generatePassword(lower, upper, number, symbol, length) {
   ].filter(Boolean);
 
   if (generators.length === 0) {
-    alert("No Selected Value");
+    showMessage("Select at least one character type.", "error");
     return "";
   }
 
@@ -97,4 +117,11 @@ function getRandomLower() {
 // function getRandomSymbol() {
 //   const symbols = "!@#$%^&*(){}[]=<>/,.";
 //   return symbols[Math.floor(Math.random() * symbols.length)];
+// }
+
+// function showMessage(text, variant = "success") {
+//   if (!messageEl) return;
+//   messageEl.textContent = text;
+//   messageEl.classList.remove("error", "success");
+//   messageEl.classList.add(variant);
 // }

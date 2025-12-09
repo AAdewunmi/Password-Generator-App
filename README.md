@@ -1,21 +1,21 @@
-# Password Generator (WIP)
+# Password Generator
 
-Lightweight in-browser password generator built with plain HTML/CSS/JS. The UI is in place; generation logic is still to be finished.
+Lightweight in-browser password generator built with plain HTML/CSS/JS.
 
 ## Quick start
 - Clone/download the repo and open `index.html` in your browser (no build step or dependencies).
-- Toggle options in the settings panel and click **Generate Password** (logic placeholder right now).
-- Click the clipboard icon to copy once functionality is implemented.
+- Choose length (2–15) and character types, then click **Generate Password**.
+- Click the clipboard icon to copy the generated password; inline feedback confirms success/error.
 
 ## Project status
 - ✅ Layout and styling (`index.html`, `styles.css`) ready for desktop/mobile.
-- ⏳ Password generation and clipboard copy logic (`script.js`) not implemented yet.
-- ⚠️ Inputs currently accept values but do not produce a password until logic is added.
+- ✅ Password generation and clipboard copy logic (`script.js`) implemented.
+- ✅ Validation with inline feedback for empty selections, invalid length, and clipboard failures.
 
-## Intended behavior (to implement)
+## Behavior
 - Generate passwords of configurable length (2–15 chars) using selected character sets: uppercase, lowercase, numbers, symbols.
 - Display generated password in the result area and allow one-click copy.
-- Graceful validation for invalid length/selection states.
+- Inline status messages for invalid length, missing selection, and clipboard fallback instructions.
 
 ## Local development notes
 - Tech stack: vanilla HTML/CSS/JavaScript; no external build tools.
