@@ -81,3 +81,7 @@ function generatePassword(lower, upper, number, symbol, length) {
 
   return chars.join("");
 }
+
+function getRandomLower() {
+    return String.fromCharCode(Math.floor(Math.random() * 26) + 97)  //A = 65  a-97
+}
