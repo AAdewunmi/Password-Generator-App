@@ -23,8 +23,8 @@ Lightweight in-browser password generator built with plain HTML/CSS/JS. The UI i
 - Add basic unit tests with your preferred approach (e.g., Jest + JSDOM) if desired.
 
 ## Roadmap / TODO
-- [ ] Implement password generation utilities and DOM event handlers.
-- [ ] Add clipboard copy with success/error feedback.
-- [ ] Input validation and inline messages.
+- [x] Implement password generation utilities and DOM event handlers.
+- [x] Add clipboard copy with success/error feedback.
+- [x] Input validation and inline messages.
 - [ ] Basic automated tests and linting.
 - [ ] Deployment instructions (static hosting).
