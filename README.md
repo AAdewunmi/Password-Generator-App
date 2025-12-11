@@ -1,30 +1,26 @@
 # Password Generator
 
-Lightweight in-browser password generator built with plain HTML/CSS/JS.
+Built for speed and clarity: a zero-dependency password generator with polished UI/UX, inline validation, and clipboard fallbacks so it behaves predictably in any browser.
 
-## Quick start
-- Clone/download the repo and open `index.html` in your browser (no build step or dependencies).
-- Choose length (2–15) and character types, then click **Generate Password**.
-- Click the clipboard icon to copy the generated password; inline feedback confirms success/error.
-- Run `npm test` for unit tests and `npm run lint` for ESLint checks.
+## Highlights
+- **Instant demo:** Open `index.html`—no build, no install.
+- **Guardrails included:** Length validation (2–15), “choose at least one set” checks, and clear status messages.
+- **Clipboard smart:** Uses the Clipboard API when available, guides the user to Ctrl/Cmd+C when it is not.
+- **Mobile friendly:** Responsive layout with accessible labels and ARIA live regions for feedback.
+- **Tested & linted:** Jest unit tests for generator logic; ESLint on by default.
 
-## Project status
-- ✅ Layout and styling (`index.html`, `styles.css`) ready for desktop/mobile.
-- ✅ Password generation and clipboard copy logic (`script.js`) implemented.
-- ✅ Validation with inline feedback for empty selections, invalid length, and clipboard failures.
+## How to use
+1) Open `index.html` in a browser.  
+2) Choose length and character sets (uppercase, lowercase, numbers, symbols).  
+3) Click **Generate Password**, then tap the clipboard icon to copy.  
+4) If the Clipboard API is blocked, the app highlights the password and tells the user how to copy manually.
 
-## Behavior
-- Generate passwords of configurable length (2–15 chars) using selected character sets: uppercase, lowercase, numbers, symbols.
-- Display generated password in the result area and allow one-click copy.
-- Inline status messages for invalid length, missing selection, and clipboard fallback instructions.
+## Local development
+- Run tests: `npm test`
+- Lint: `npm run lint`
+- Key files: `index.html` (markup), `styles.css` (layout/theme), `script.js` (logic & DOM wiring), `__tests__/script.test.js` (unit tests).
 
-## Local development notes
-- Tech stack: vanilla HTML/CSS/JavaScript; no external build tools.
-- Start by wiring JS to DOM elements (see IDs/classes in `index.html`).
-- Add basic unit tests with your preferred approach (e.g., Jest + JSDOM) if desired.
-
-## Roadmap / TODO
-- [x] Implement password generation utilities and DOM event handlers.
-- [x] Add clipboard copy with success/error feedback.
-- [x] Input validation and inline messages.
-- [x] Basic automated tests and linting.
+## What this demonstrates
+- Thoughtful UX for edge cases (invalid input, clipboard failures).
+- Clean, dependency-free front-end architecture.
+- Discipline with automated tests and linting, even on small utilities.***
