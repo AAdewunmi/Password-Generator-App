@@ -6,6 +6,7 @@ Lightweight in-browser password generator built with plain HTML/CSS/JS.
 - Clone/download the repo and open `index.html` in your browser (no build step or dependencies).
 - Choose length (2–15) and character types, then click **Generate Password**.
 - Click the clipboard icon to copy the generated password; inline feedback confirms success/error.
+- Run `npm test` for unit tests and `npm run lint` for ESLint checks.
 
 ## Project status
 - ✅ Layout and styling (`index.html`, `styles.css`) ready for desktop/mobile.
@@ -26,5 +27,4 @@ Lightweight in-browser password generator built with plain HTML/CSS/JS.
 - [x] Implement password generation utilities and DOM event handlers.
 - [x] Add clipboard copy with success/error feedback.
 - [x] Input validation and inline messages.
-- [ ] Basic automated tests and linting.
-- [ ] Deployment instructions (static hosting).
+- [x] Basic automated tests and linting.
