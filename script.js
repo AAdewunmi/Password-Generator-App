@@ -119,9 +119,9 @@ function getRandomSymbol() {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-// function showMessage(text, variant = "success") {
-//   if (!messageEl) return;
-//   messageEl.textContent = text;
-//   messageEl.classList.remove("error", "success");
-//   messageEl.classList.add(variant);
-// }
+function showMessage(text, variant = "success") {
+  if (!messageEl) return;
+  messageEl.textContent = text;
+  messageEl.classList.remove("error", "success");
+  messageEl.classList.add(variant);
+}
