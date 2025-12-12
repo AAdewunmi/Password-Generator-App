@@ -1,3 +1,11 @@
+/**
+ * Unit tests for the password generator utilities.
+ *
+ * Approach:
+ * - Mock Math.random to make generator output deterministic.
+ * - Reset Math.random after each test to avoid cross-test pollution.
+ * - Cover error handling, generator rotation, and output characteristics.
+ */
 const {
   generatePassword,
   getRandomLower,
@@ -10,6 +18,7 @@ describe("generatePassword", () => {
   const originalRandom = Math.random;
 
   afterEach(() => {
+    // Restore the global RNG so other test suites remain unaffected.
     Math.random = originalRandom;
   });
 
@@ -22,6 +31,7 @@ describe("generatePassword", () => {
   });
 
   test("generates a password including all enabled character types", () => {
+    // Force the first entry from each generator to confirm inclusion.
     const mockValues = [0, 0, 0, 0];
     Math.random = jest.fn().mockImplementation(() => mockValues.shift() ?? 0);
 
@@ -31,6 +41,7 @@ describe("generatePassword", () => {
   });
 
   test("cycles through enabled generators and honors requested length", () => {
+    // Mix RNG outputs to verify round-robin selection and length handling.
     const mockValues = [0, 0.5, 0.2, 0.1, 0.9];
     Math.random = jest.fn().mockImplementation(() => mockValues.shift() ?? 0);
 
