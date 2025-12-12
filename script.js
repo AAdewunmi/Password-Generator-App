@@ -1,3 +1,4 @@
+// Maps the character type toggles to their generator helpers.
 const randomFunc = {
   lower: getRandomLower,
   upper: getRandomUpper,
@@ -5,7 +6,13 @@ const randomFunc = {
   symbol: getRandomSymbol,
 };
 
+/**
+ * Builds a function that updates a status message element.
+ * @param {HTMLElement | null} messageEl - Target element for status text.
+ * @returns {(text: string, variant?: "success" | "error") => void}
+ */
 function createShowMessage(messageEl) {
+  // Returns a UI helper for consistent status messaging.
   return function showMessage(text, variant = "success") {
     if (!messageEl) return;
     messageEl.textContent = text;
@@ -14,6 +21,13 @@ function createShowMessage(messageEl) {
   };
 }
 
+/**
+ * Adds clipboard copy behavior to a control element.
+ * Falls back to manual selection when the Clipboard API is unavailable.
+ * @param {HTMLElement | null} clipboardEl - Button/icon to trigger copy.
+ * @param {HTMLElement | null} resultEl - Element containing the password text.
+ * @param {(text: string, variant?: "success" | "error") => void} showMessage - UI notifier.
+ */
 function attachClipboardHandler(clipboardEl, resultEl, showMessage) {
   if (!clipboardEl || !resultEl) return;
 
@@ -56,6 +70,14 @@ function attachClipboardHandler(clipboardEl, resultEl, showMessage) {
   };
 }
 
+/**
+ * Hooks up password generation to the UI controls.
+ * Validates inputs, triggers generation, and surfaces status messages.
+ * @param {HTMLElement | null} generateEl - Generate button element.
+ * @param {{lengthEl: HTMLInputElement, lowercaseEl: HTMLInputElement, uppercaseEl: HTMLInputElement, numbersEl: HTMLInputElement, symbolsEl: HTMLInputElement}} inputs - Form controls.
+ * @param {HTMLElement | null} resultEl - Display element for the generated password.
+ * @param {(text: string, variant?: "success" | "error") => void} [showMessageFn] - Optional UI notifier.
+ */
 function attachGenerateHandler(
   generateEl,
   inputs,
@@ -67,6 +89,7 @@ function attachGenerateHandler(
   const { lengthEl, lowercaseEl, uppercaseEl, numbersEl, symbolsEl } = inputs;
 
   generateEl.onclick = () => {
+    // Gather user settings and validate before generating.
     const length = Number(lengthEl.value);
     const hasLower = lowercaseEl.checked;
     const hasUpper = uppercaseEl.checked;
@@ -101,7 +124,11 @@ function attachGenerateHandler(
   };
 }
 
+/**
+ * Initializes DOM references and event handlers when the page is ready.
+ */
 function init() {
+  // Wire up DOM elements and event handlers.
   const resultEl = document.querySelector(".result");
   const lengthEl = document.querySelector(".length");
   const uppercaseEl = document.querySelector(".uppercase");
@@ -138,6 +165,7 @@ function generatePassword(
   length,
   onError = () => {}
 ) {
+  // Build the active generator list based on toggles.
   const generators = [
     lower && randomFunc.lower,
     upper && randomFunc.upper,
@@ -150,6 +178,7 @@ function generatePassword(
     return "";
   }
 
+  // Cycle through available generators to spread character types evenly.
   const chars = [];
   for (let i = 0; chars.length < length; i += 1) {
     const generator = generators[i % generators.length];
@@ -159,18 +188,34 @@ function generatePassword(
   return chars.join("");
 }
 
+/**
+ * Returns a random lowercase ASCII letter.
+ * @returns {string}
+ */
 function getRandomLower() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
 
+/**
+ * Returns a random uppercase ASCII letter.
+ * @returns {string}
+ */
 function getRandomUpper() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
 
+/**
+ * Returns a random numeric digit.
+ * @returns {string}
+ */
 function getRandomNumber() {
   return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
 
+/**
+ * Returns a random symbol from the allowed set.
+ * @returns {string}
+ */
 function getRandomSymbol() {
   const symbols = "!@#$%^&*(){}[]=<>/,.";
   return symbols[Math.floor(Math.random() * symbols.length)];
