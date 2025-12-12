@@ -9,6 +9,18 @@ Built for speed and clarity: a zero-dependency password generator with polished 
 - **Mobile friendly:** Responsive layout with accessible labels and ARIA live regions for feedback.
 - **Tested & linted:** Jest unit tests for generator logic; ESLint on by default.
 
+## Screenshots
+
+![Password Generator](./screenshots/screenshot_1.png)
+
+![Password Generator — With Password](./screenshots/screenshot_1.png)
+
+## Tech Stack
+- HTML/CSS/Vanilla JS (no build tooling required)
+- Jest for unit testing
+- ESLint (recommended config) for linting
+- npm scripts for test/lint orchestration
+
 ## How to use
 1) Open `index.html` in a browser.  
 2) Choose length and character sets (uppercase, lowercase, numbers, symbols).  
@@ -23,4 +35,4 @@ Built for speed and clarity: a zero-dependency password generator with polished 
 ## What this demonstrates
 - Thoughtful UX for edge cases (invalid input, clipboard failures).
 - Clean, dependency-free front-end architecture.
-- Discipline with automated tests and linting, even on small utilities.***
+- Discipline with automated tests and linting, even on small utilities.
